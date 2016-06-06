@@ -60,3 +60,9 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# Module specific
+passport_config.json
+
+# Mac
+.DS_Store
