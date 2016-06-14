@@ -120,6 +120,12 @@ class BoxPassport(object):
 
         return oauth
 
+    def get_auth_client(self):
+        oauth = self.authenticate()
+        client = Client(oauth)
+
+        return client
+
 def main():
     p = BoxPassport()
     oauth = p.authenticate()
@@ -129,4 +135,6 @@ def main():
     me = client.user(user_id='me').get()
     log.info('User login: ', me['login'])
 
-main()
+# Module test
+if __name__ == '__main__':
+    main()
