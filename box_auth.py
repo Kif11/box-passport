@@ -8,9 +8,9 @@ import SimpleHTTPServer
 from urlparse import urlparse, parse_qs
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
-from modules.boxsdk import Client, OAuth2
-from modules.pathlib import Path
-from modules.logger import Logger
+from boxsdk import Client, OAuth2
+from pathlib import Path
+from logger import Logger
 
 log = Logger()
 
@@ -18,7 +18,8 @@ class BoxPassport(object):
 
     def __init__(self):
 
-        config_file = Path('passport_config.json')
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        config_file = Path(script_dir, 'passport_config.json')
 
         # Read the configuration file
         with config_file.open() as f:
