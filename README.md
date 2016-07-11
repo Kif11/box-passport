@@ -1,5 +1,5 @@
 # Box Passport
-BOX.com module that provide an robust way to login a user for your application
+BOX.com module that provide an robust way to login a user for your application.
 
 Install module dependencies:
 ```bash
