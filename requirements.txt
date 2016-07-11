@@ -1,0 +1,2 @@
+-e git://github.com/box/box-python-sdk.git#egg=boxsdk
+pathlib

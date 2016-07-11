@@ -7,12 +7,13 @@ import SimpleHTTPServer
 
 from urlparse import urlparse, parse_qs
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-
 from boxsdk import Client, OAuth2
 from pathlib import Path
-from logger import Logger
 
-log = Logger()
+import logging
+logging.basicConfig(format='%(levelname)s: %(message)s')
+log = logging.getLogger(__file__)
+log.setLevel(logging.INFO)
 
 class BoxPassport(object):
 
@@ -53,7 +54,7 @@ class BoxPassport(object):
         # It should be stored per user!
         data = {'access_token': access_token, 'refresh_token': refresh_token}
         with open(str(self.token_file), 'w') as f:
-            log.info('Storing tokings to %s' % self.token_file)
+            log.debug('Storing tokings to %s' % self.token_file)
             json.dump(data, f)
 
     def authenticate(self):
@@ -134,7 +135,7 @@ def main():
     # Test request
     client = Client(oauth)
     me = client.user(user_id='me').get()
-    log.info('User login: ', me['login'])
+    log.info('User login: %s' % me['login'])
 
 # Module test
 if __name__ == '__main__':
